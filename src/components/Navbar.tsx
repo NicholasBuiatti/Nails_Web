@@ -1,10 +1,10 @@
-import { routes } from "../routes/routes";
+import { routes } from "../router/routes";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useUiStore } from "../store/uiStore";
 import { Menu } from "lucide-react";
 import testLogo from "../assets/testLogo-nobg.webp";
-// import { SocialLinks } from "./common/SocialLinks";
+import { SocialLinks } from "./common/SocialLinks";
 
 const Navbar = () => {
   const { navbarDropdown, toggleNavbarDropdown, closeAllDropdowns } =
@@ -19,25 +19,26 @@ const Navbar = () => {
         </div>
         <ul className="hidden md:flex justify-end ms-auto">
           {routes
-            .filter((route) => route.id)
             .map((route) => (
-              <li key={route.id} className="px-4">
+              <>
+              <li key={route.label} className="px-4">
                 <Link
                   to={route.path}
-                  className={`hover:text-gray-500 ${
-                    location.pathname === route.path ? "text-gray-500" : ""
+                  className={`hover:text-blue-800 ${
+                    location.pathname === route.path ? "text-blue-800" : ""
                   }`}
-                >
+                  >
                   {route.label}
                 </Link>
               </li>
+                  </>
             ))}
         </ul>
-        {/* <SocialLinks className="hidden md:flex w-2/12 justify-end space-x-5 ms-4" /> */}
+        <SocialLinks className="hidden md:flex w-2/12 justify-end space-x-5 ms-4" />
 
         {/* Bottone menu per mobile */}
         <button className="md:hidden" onClick={toggleNavbarDropdown}>
-          <Menu className={`${navbarDropdown ? "text-gray-500" : ""}`} />
+          <Menu className={`${navbarDropdown ? "text-blue-800" : ""}`} />
         </button>
 
         {/* Dropdown menu visibile su mobile */}
@@ -54,8 +55,8 @@ const Navbar = () => {
               <ul className="space-y-2">
                 {routes.map(
                   (route) =>
-                    route.id && (
-                      <li key={route.id} className="border-b border-gray-700">
+                    route.label && (
+                      <li key={route.label} className="border-b border-blue-800">
                         <Link
                           to={route.path}
                           onClick={closeAllDropdowns}
@@ -71,7 +72,7 @@ const Navbar = () => {
                     )
                 )}
                 <li>
-                  {/* <SocialLinks className="flex justify-center space-x-6" /> */}
+                  <SocialLinks className="flex justify-center space-x-6" />
                 </li>
               </ul>
             </motion.div>
