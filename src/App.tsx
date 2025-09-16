@@ -1,13 +1,35 @@
-import "./App.css";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {motion} from "framer-motion";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import {BrowserRouter as Router} from "react-router-dom";
+import AppRoutes from "./routes/AppRouter";
 
+import "./App.css";
+const queryClient = new QueryClient();
 function App() {
   return (
     <>
-      <div className="flex items-center justify-center h-screen bg-blue-500">
-        <h1 className="text-white text-4xl font-bold">
-          Benvenuto in Vite + React + Tailwind!
-        </h1>
-      </div>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+      <div className="flex flex-col relative min-h-screen bg-[#FFFDFE] text-gray-800">
+          <motion.div
+            className="bg-pink-100 sticky top-0 z-50"
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <Navbar />
+          </motion.div>
+          <div className="flex-1">
+            <AppRoutes />
+          </div>
+          <div className="bg-[#F3F4F6] items-end">
+            <Footer />
+          </div>
+        </div>
+      </Router>
+    </QueryClientProvider>
     </>
   );
 }
