@@ -2,7 +2,7 @@
 import React from "react";
 import Homepage from "../pages/Homepage";
 import Galleria from "../pages/Galleria";
-import ServiziPrezzi from "../pages/SeriziPrezzi";
+import Servizi from "../pages/Serizi";
 import Formazione from "../pages/Formazione";
 import Contatti from "../pages/Contatti";
 import Errore from "../pages/Errore";
@@ -29,9 +29,9 @@ export const routes: Route[] = [
   },
   {
     // id: 3,
-    path: "/Servizi&Prezzi",
-    element: <ServiziPrezzi />,
-    label: "servizi e prezzi",
+    path: "/Servizi",
+    element: <Servizi />,
+    label: "servizi",
   },
   {
     // id: 4,
