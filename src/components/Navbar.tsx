@@ -12,7 +12,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="container mx-auto">
       <nav className="flex items-center p-4 justify-between">
         <div className="w-24">
           <img className="invert" src={testLogo} alt="Logo" />
@@ -45,22 +45,22 @@ const Navbar = () => {
         <AnimatePresence>
           {navbarDropdown && (
             <motion.div
-              className="absolute left-0 top-full w-full z-50 py-4 shadow-lg bg-[#222] text-white md:hidden"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              className="flex flex-col absolute left-0 top-full min-h-100 w-3/4 z-50 py-4 shadow-xl bg-blue-100 md:hidden"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              style={{ transformOrigin: "top" }}
+              style={{ transformOrigin: "top", height: "calc(100vh - 88px)" }}
             >
-              <ul className="space-y-2">
+              
                 {routes.map(
                   (route) =>
                     route.label && (
-                      <li key={route.label} className="border-b border-blue-800">
+                      <div key={route.label} className="border-b border-blue-200">
                         <Link
                           to={route.path}
                           onClick={closeAllDropdowns}
-                          className={`text-center block py-2 px-4 hover:bg-sky-700 ${
+                          className={`text-center block py-4 px-4 hover:bg-sky-300 ${
                             location.pathname === route.path
                               ? "text-grey-700"
                               : ""
@@ -68,13 +68,12 @@ const Navbar = () => {
                         >
                           {route.label}
                         </Link>
-                      </li>
+                      </div>
                     )
                 )}
-                <li>
+                <div className="mt-auto">
                   <SocialLinks className="flex justify-center space-x-6" />
-                </li>
-              </ul>
+                </div>
             </motion.div>
           )}
         </AnimatePresence>
