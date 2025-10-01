@@ -25,13 +25,13 @@ export default function Homepage() {
             </div>
             <div className="flex flex-col md:flex-row md:space-x-2 space-y-6 md:space-y-0 items-center md:items-start">
                 <motion.div
-                    className="w-1/2 bg-white p-6 rounded-lg shadow-lg"
+                    className="w-full md:w-1/2 bg-white p-6 rounded-lg shadow-lg"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 1 }}
                 >
                     <h2 className="text-2xl font-semibold mb-4 text-pink-600">Indirizzo</h2>
-                    <div className="flex items-center mb-2">
+                    <div className="flex items-center justify-between mb-2">
 
                         <p className="text-gray-700">📍 Via Roma 123, 00100 Roma, Italia</p>
                         <Button
@@ -56,18 +56,27 @@ export default function Homepage() {
                     </div>
                 </motion.div>
                 <div className="flex flex-col space-y-6 w-full md:w-1/2">
-                    <div className="bg-white p-6 rounded-lg shadow-lg w-full">
-
+                    <motion.div
+                        className="bg-white p-6 rounded-lg shadow-lg"
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1, delay: 1 }}
+                    >
                         <h2 className="text-2xl font-semibold mb-4 text-pink-600">Contatti</h2>
                         <p className="text-gray-700">Telefono: <a href="tel:+390612345678" className="text-pink-600 hover:underline">+39 06 12345678</a></p>
                         <p className="text-gray-700 mt-2">Email: <a href="mailto:info@nails.com" className="text-pink-600 hover:underline">info@nails.com</a></p>
-                    </div>
-                    <div className="bg-white p-6 rounded-lg shadow-lg w-full">
+                    </motion.div>
+                    <motion.div
+                        className="bg-white p-6 rounded-lg shadow-lg"
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1, delay: 1 }}
+                    >
                         <h2 className="text-2xl font-semibold mb-4 text-pink-600">Orari</h2>
                         <p className="text-gray-700 mt-2">Orari di apertura: Lun-Ven 9:00 - 19:00</p>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
